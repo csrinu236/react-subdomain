@@ -3,24 +3,18 @@ import './App.css';
 import { useEffect } from 'react';
 
 function App() {
+  const apiUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8888/api/index'
+      : 'https://netlify-apis.netlify.app/api/index';
+
   useEffect(() => {
-    fetch('https://netlify-apis.netlify.app/api/index', {
+    fetch(apiUrl, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((resp) => {
-        return resp.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-    fetch('https://netlify-apis.netlify.app/api/hello', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      credentials: 'include',
     })
       .then((resp) => {
         return resp.json();
@@ -29,6 +23,27 @@ function App() {
         console.log(data);
       });
   }, []);
+
+  useEffect(() => {
+    const apiUrl =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8888/api/hello'
+        : 'https://netlify-apis.netlify.app/api/hello';
+    fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
