@@ -4,7 +4,19 @@ import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
-    fetch('http://localhost:8888/api/index', {
+    fetch('https://netlify-apis.netlify.app/api/index', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+    fetch('https://netlify-apis.netlify.app/api/hello', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
