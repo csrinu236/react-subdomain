@@ -3,6 +3,7 @@ import './App.css';
 import { useEffect } from 'react';
 
 function App() {
+  console.log('<========>', process.env.NODE_ENV);
   const apiUrl =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:8888/api/index'
