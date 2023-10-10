@@ -6,10 +6,10 @@ function App() {
   console.log('<========>', process.env.NODE_ENV);
 
   useEffect(() => {
-    const apiUrl =
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:8888/api/index'
-        : 'https://netlify-apis.netlify.app/api/index';
+    const apiUrl = 'https://netlify-apis.netlify.app/api/index';
+    // process.env.NODE_ENV === 'development'
+    //   ? 'http://localhost:8888/api/index'
+    //   : 'https://netlify-apis.netlify.app/api/index';
     fetch(apiUrl, {
       method: 'GET',
       headers: {
@@ -26,10 +26,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const apiUrl =
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:8888/api/hello'
-        : 'https://netlify-apis.netlify.app/api/hello';
+    const apiUrl = 'https://netlify-apis.netlify.app/api/hello';
+    // process.env.NODE_ENV === 'development'
+    //   ? 'http://localhost:8888/api/hello'
+    //   : 'https://netlify-apis.netlify.app/api/hello';
 
     fetch(apiUrl, {
       method: 'GET',
